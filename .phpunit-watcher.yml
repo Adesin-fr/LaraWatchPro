@@ -1,0 +1,11 @@
+watch:
+  directories:
+    - app
+    - database
+    - routes
+    - config
+    - tests
+  fileMask: '*.php'
+phpunit:
+  binaryPath: vendor/bin/pest
+hideManual: true

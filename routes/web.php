@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LogEventController;
+use App\Http\Controllers\MonitoredAppsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,4 +34,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    Route::get('/apps', [MonitoredAppsController::class, 'index'])->name('apps.index');
+    Route::post('/apps', [MonitoredAppsController::class, 'store'])->name('apps.store');
 });
+
+Route::post('/api/events/create', [LogEventController::class, 'store']);
