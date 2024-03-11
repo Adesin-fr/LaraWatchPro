@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class AppLog extends Model
 {
@@ -17,5 +18,11 @@ class AppLog extends Model
         'file',
         'line',
         'trace',
+        'codeExcerpt',
     ];
+
+    protected $casts=[
+        'codeExcerpt' => 'array'
+    ];
+
 }

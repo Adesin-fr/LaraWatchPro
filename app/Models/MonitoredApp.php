@@ -15,6 +15,15 @@ class MonitoredApp extends Model
         'name'
     ];
 
+    public function app_logs()
+    {
+        return $this->hasMany(AppLog::class, 'app_id');
+    }
+    public function app_logs_errors()
+    {
+        return $this->hasMany(AppLog::class, 'app_id')->whereLevel('error');
+    }
+
     protected static function booted()
     {
         parent::booted();

@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LogEventController;
+use App\Http\Controllers\LogViewerController;
 use App\Http\Controllers\MonitoredAppsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -21,8 +23,6 @@ Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
     ]);
 });
 
@@ -31,11 +31,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    Route::get('/apps/{app_id}/view_logs', [LogViewerController::class, 'show_logs_for_app'])->name('apps.view_logs');
     Route::get('/apps', [MonitoredAppsController::class, 'index'])->name('apps.index');
+    Route::get('/apps/create', [MonitoredAppsController::class, 'create'])->name('apps.create');
     Route::post('/apps', [MonitoredAppsController::class, 'store'])->name('apps.store');
 });
 

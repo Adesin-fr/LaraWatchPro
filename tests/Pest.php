@@ -42,7 +42,24 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function getLogTestData()
 {
-    // ..
+    return [
+        'level' => 'error',
+        'message' => 'Class FooBar not found',
+        'userId' => '01ham7pf764q5jwht4aj7h95pw',
+        'file' => '/home/user/myfile.php',
+        'line' => 54,
+        'trace' => '#0  /thefile.php: FooController.php(54): theFunction()',
+        'codeExcerpt' =>
+            [
+                39 => '{',
+                40 => 'Alltotot();',
+                41 => 'return new JsonResource(',
+                42 => 'Invoice::query()',
+                43 => '->whereIn(\'type\', [\'I\', \'C\'])',
+                44 => '->where(\'validated\', true)',
+                45 => '->where(\'status\', \'!=\', \'PAID\')',
+            ]
+    ];
 }

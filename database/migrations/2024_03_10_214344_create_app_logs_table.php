@@ -17,7 +17,8 @@ return new class extends Migration {
             $table->string('userId')->nullable();
             $table->string('file')->nullable();
             $table->integer('line')->nullable();
-            $table->string('trace')->nullable();
+            $table->longText('trace')->nullable();
+            $table->longText('codeExcerpt')->nullable();
 
             $table->timestamps();
         });
