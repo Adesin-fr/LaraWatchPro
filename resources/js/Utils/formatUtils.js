@@ -14,7 +14,7 @@ const formatDateTime = (dateString) => {
         return '';
     }
     // Then specify how you want your dates to be formatted
-    return `${date.format('DD/MM/YYYY')} à ${date.format('HH:mm')}`;
+    return `${date.format('DD/MM/YYYY')} ${date.format('HH:mm')}`;
 };
 
 const formatPrice = (price) => {

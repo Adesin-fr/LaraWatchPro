@@ -54,9 +54,9 @@ const CopyAppTokenToClipboard = async (app) => {
                         <tbody>
                         <template v-for="app in apps">
                             <tr>
-                                <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 p-2 text-left ">
+                                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 p-2 text-left ">
                                     {{ app.name }}
-                                </th>
+                                </td>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 p-2 ">
                                     {{ app.app_logs_errors_count }}
                                 </td>

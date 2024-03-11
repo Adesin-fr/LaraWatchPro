@@ -33,10 +33,13 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/apps/{app_id}/view_logs', [LogViewerController::class, 'show_logs_for_app'])->name('apps.view_logs');
+
     Route::get('/apps', [MonitoredAppsController::class, 'index'])->name('apps.index');
     Route::get('/apps/create', [MonitoredAppsController::class, 'create'])->name('apps.create');
     Route::post('/apps', [MonitoredAppsController::class, 'store'])->name('apps.store');
+
+    Route::get('/apps/{app_id}/view_logs', [LogViewerController::class, 'show_logs_for_app'])->name('apps.view_logs');
+
 });
 
 Route::post('/api/events/create', [LogEventController::class, 'store']);
