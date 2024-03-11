@@ -21,7 +21,15 @@ return new class extends Migration {
             $table->longText('codeExcerpt')->nullable();
 
             $table->timestamps();
+
+            $table->index([
+                'app_id',
+                'level'
+            ]);
+
+            $table->fullText('message');
         });
+
     }
 
     public function down(): void
